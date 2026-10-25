@@ -1,0 +1,132 @@
+:root {
+  --bg: #f7f9fc;
+  --text: #1c2740;
+  --muted: #52607a;
+  --primary: #1f4fd8;
+  --primary-dark: #163aa3;
+  --nav-bg: #ffffff;
+  --border: #dde3ee;
+}
+ 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+ 
+
+.navbar {
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+}
+ 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+ 
+.dropdown summary {
+  list-style: none;            
+  cursor: pointer;
+  padding: 0.5rem 1.25rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  user-select: none;
+}
+ 
+.dropdown summary::-webkit-details-marker {
+  display: none;               
+}
+ 
+.dropdown summary:hover {
+  background: var(--primary-dark);
+}
+ 
+.dropdown summary:focus-visible {
+  outline: 3px solid #9bb4f5;
+  outline-offset: 2px;
+}
+ 
+.dropdown ul {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  min-width: 220px;
+  background: var(--nav-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(28, 39, 64, 0.12);
+  padding: 0.4rem;
+}
+ 
+.dropdown a {
+  display: block;
+  padding: 0.55rem 0.9rem;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 6px;
+}
+ 
+.dropdown a:hover,
+.dropdown a:focus-visible {
+  background: var(--bg);
+  color: var(--primary);
+  outline: none;
+}
+ 
+.dropdown a.activ {
+  background: var(--primary);
+  color: #fff;
+}
+ 
+.start {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+ 
+.titlu {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+ 
+.descriere {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 auto 2.5rem;
+}
+ 
+.buton-tutorial {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+ 
+.buton-tutorial:hover {
+  background: var(--primary-dark);
+}
+ 
+.buton-tutorial:focus-visible {
+  outline: 3px solid #9bb4f5;
+  outline-offset: 2px;
+}
