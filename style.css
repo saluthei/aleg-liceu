@@ -30,68 +30,45 @@ body {
   top: 0;
 }
  
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
- 
-.dropdown summary {
-  list-style: none;            
-  cursor: pointer;
-  padding: 0.5rem 1.25rem;
-  background: var(--primary);
-  color: #fff;
-  border-radius: 6px;
-  font-weight: 600;
-  user-select: none;
-}
- 
-.dropdown summary::-webkit-details-marker {
-  display: none;               
-}
- 
-.dropdown summary:hover {
-  background: var(--primary-dark);
-}
- 
-.dropdown summary:focus-visible {
-  outline: 3px solid #9bb4f5;
-  outline-offset: 2px;
-}
- 
-.dropdown ul {
+.navbar ul {
   list-style: none;
-  position: absolute;
-  top: calc(100% + 0.4rem);
-  left: 0;
-  min-width: 220px;
-  background: var(--nav-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  box-shadow: 0 6px 16px rgba(28, 39, 64, 0.12);
-  padding: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
- 
-.dropdown a {
+
+.navbar li {
+  flex: 1 1 0;
+  min-width: max-content;
+  text-align: center;
+}
+
+.navbar a {
   display: block;
   padding: 0.55rem 0.9rem;
   color: var(--text);
   text-decoration: none;
+  font-weight: 600;
   border-radius: 6px;
 }
- 
-.dropdown a:hover,
-.dropdown a:focus-visible {
+
+.navbar a:hover,
+.navbar a:focus-visible {
   background: var(--bg);
   color: var(--primary);
   outline: none;
 }
- 
-.dropdown a.activ {
+
+.navbar a:focus-visible {
+  outline: 3px solid #9bb4f5;
+  outline-offset: 2px;
+}
+
+.navbar a.activ {
   background: var(--primary);
   color: #fff;
 }
- 
+
 .start {
   max-width: 720px;
   margin: 0 auto;
@@ -129,4 +106,97 @@ body {
 .buton-tutorial:focus-visible {
   outline: 3px solid #9bb4f5;
   outline-offset: 2px;
+}
+
+/* ==Tutorial== */
+
+.tutorial {
+  min-height: 70vh;
+}
+
+.tinta {
+  outline: 3px solid var(--primary);
+  outline-offset: -3px;
+}
+
+.tooltip {
+  --sageata-x: 50%;
+  position: fixed;
+  z-index: 10;
+  width: min(320px, calc(100vw - 24px));
+  background: var(--nav-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 6px 16px rgba(28, 39, 64, 0.18);
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: var(--sageata-x);
+  width: 12px;
+  height: 12px;
+  background: var(--nav-bg);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.progres {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.pas h2 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+}
+
+.pas p {
+  font-size: 0.95rem;
+}
+
+.pas p + p {
+  margin-top: 0.5rem;
+}
+
+.pas .nota {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.butoane-tutorial {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--primary);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #9bb4f5;
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  background: var(--border);
+  color: var(--muted);
+  cursor: not-allowed;
 }
