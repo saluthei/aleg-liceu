@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tutorial – AlegLiceu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar" aria-label="Meniu principal">
+    <ul>
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="dashboardrec.html">Dashboard & Recomandari</a></li>
+      <li><a href="jocuri.html">Jocuri</a></li>
+      <li><a href="licee.html">Licee</a></li>
+      <li><a href="setari.html">Setari</a></li>
+    </ul>
+  </nav>
+
+    <main class="tutorial"></main>
+
+  <div class="tooltip" id="tooltip" role="dialog" aria-label="Pas din tutorial">
+    <p class="progres" id="progres" aria-live="polite"></p>
+
+    <section class="pas" data-tinta=".navbar">
+      <h2>Meniul</h2>
+      <p>Din <strong>meniul de navigare</strong>, aflat în partea de sus a paginii, poți accesa toate celelalte secțiuni ale aplicației.</p>
+    </section>
+
+    <section class="pas" data-tinta="a[href='dashboardrec.html']" hidden>
+      <h2>Dashboard &amp; Recomandări</h2>
+      <p>Aici vezi scorurile acumulate, care arată înclinația ta către o anumită specializare. Tot aici găsești recomandări de licee (din județul tău, dacă l-ai precizat) și profile.</p>
+    </section>
+
+    <section class="pas" data-tinta="a[href='jocuri.html']" hidden>
+      <h2>Jocuri</h2>
+      <p>Aici se află activitățile prin care se construiește profilul tău.</p>
+      <p class="nota">Fiecare joc are și un tutorial propriu.</p>
+    </section>
+
+    <section class="pas" data-tinta="a[href='licee.html']" hidden>
+      <h2>Licee</h2>
+      <p>Aici găsești o prezentare detaliată a liceului și a profilului selectat.</p>
+    </section>
+
+    <section class="pas" data-tinta="a[href='setari.html']" hidden>
+      <h2>Setări</h2>
+      <p>Aici poți schimba profilul, poți reseta datele și altele.</p>
+    </section>
+
+    <div class="butoane-tutorial">
+      <button type="button" class="btn" id="btn-inapoi">Înapoi</button>
+      <button type="button" class="btn" id="btn-inainte">Înainte</button>
+    </div>
+  </div>
+
+  <script>
+    const pasi = document.querySelectorAll(".pas");
+    const tooltip = document.getElementById("tooltip");
+    const progres = document.getElementById("progres");
+    const btnInapoi = document.getElementById("btn-inapoi");
+    const btnInainte = document.getElementById("btn-inainte");
+    let curent = 0;
+
+    function pozitioneaza() {
+      const tinta = document.querySelector(pasi[curent].dataset.tinta);
+
+      document.querySelectorAll(".tinta").forEach((el) => el.classList.remove("tinta"));
+      tinta.classList.add("tinta");
+
+      const r = tinta.getBoundingClientRect();
+      const latime = tooltip.offsetWidth;
+      const centru = r.left + r.width / 2;
+
+      const stanga = Math.max(12, Math.min(centru - latime / 2, window.innerWidth - latime - 12));
+      const sageata = Math.max(16, Math.min(centru - stanga, latime - 16));
+
+      tooltip.style.left = stanga + "px";
+      tooltip.style.top = r.bottom + 14 + "px";
+      tooltip.style.setProperty("--sageata-x", sageata + "px");
+    }
+
+    function afiseaza() {
+      pasi.forEach((pas, i) => {
+        pas.hidden = i !== curent;
+      });
+      progres.textContent = "Pasul " + (curent + 1) + " din " + pasi.length;
+      btnInapoi.disabled = curent === 0;
+      btnInainte.disabled = curent === pasi.length - 1;
+      pozitioneaza();
+    }
+
+    btnInapoi.addEventListener("click", () => {
+      if (curent > 0) {
+        curent--;
+        afiseaza();
+      }
+    });
+
+    btnInainte.addEventListener("click", () => {
+      if (curent < pasi.length - 1) {
+        curent++;
+        afiseaza();
+      }
+    });
+
+    window.addEventListener("resize", pozitioneaza);
+
+    afiseaza();
+  </script>
+
+</body>
+</html>
